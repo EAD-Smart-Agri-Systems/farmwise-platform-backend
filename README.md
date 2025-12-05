@@ -67,7 +67,7 @@ Folder structure (initial phase):
 
 ### Setup Steps
 ```bash
-git clone https://github.com/<org>/farmwise-platform-backend
+git clone https://github.com/EAD-Smart-Agri-Systems/farmwise-platform-backend
 cd farmwise-platform-backend
 dotnet restore
 dotnet build
