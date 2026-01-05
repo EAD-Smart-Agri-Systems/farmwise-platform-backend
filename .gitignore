@@ -212,6 +212,17 @@ PublishScripts/
 *.nuget.props
 *.nuget.targets
 
+# NuGet generated files (PackageReference)
+project.assets.json
+project.nuget.cache
+*.nuget.g.props
+*.nuget.dgspec.json
+
+
+**/project.assets.json
+**/project.nuget.cache
+
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
