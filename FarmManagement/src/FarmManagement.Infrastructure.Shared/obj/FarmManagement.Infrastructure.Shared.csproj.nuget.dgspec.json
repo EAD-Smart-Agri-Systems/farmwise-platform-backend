@@ -1,32 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj": {}
+    "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj": {
+    "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj",
         "projectName": "FarmManagement.Infrastructure.Shared",
-        "projectPath": "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj",
-        "packagesPath": "C:\\Users\\Bemnet\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\obj\\",
+        "projectPath": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\FarmManagement.Infrastructure.Shared.csproj",
+        "packagesPath": "C:\\Users\\hasse\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Infrastructure.Shared\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Bemnet\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\hasse\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://www.nuget.org/api/v2/": {}
         },
         "frameworks": {
           "net10.0": {

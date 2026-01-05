@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarmManagement.Modules.Advisory.Application\FarmManagement.Modules.Advisory.Application.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.Infrastructure.Shared\FarmManagement.Infrastructure.Shared.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

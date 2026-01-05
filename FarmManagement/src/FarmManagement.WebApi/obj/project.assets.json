@@ -36,6 +36,59 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "FarmManagement.Modules.Advisory.Api/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "FarmManagement.Modules.Advisory.Application": "1.0.0",
+          "Microsoft.AspNetCore.OpenApi": "10.0.1"
+        },
+        "compile": {
+          "bin/placeholder/FarmManagement.Modules.Advisory.Api.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FarmManagement.Modules.Advisory.Api.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "FarmManagement.Modules.Advisory.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "FarmManagement.Modules.Advisory.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FarmManagement.Modules.Advisory.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FarmManagement.Modules.Advisory.Application.dll": {}
+        }
+      },
+      "FarmManagement.Modules.Advisory.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "FarmManagement.SharedKernel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FarmManagement.Modules.Advisory.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FarmManagement.Modules.Advisory.Domain.dll": {}
+        }
+      },
+      "FarmManagement.SharedKernel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/FarmManagement.SharedKernel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FarmManagement.SharedKernel.dll": {}
+        }
       }
     }
   },
@@ -75,45 +128,63 @@
         "microsoft.openapi.2.0.0.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "FarmManagement.Modules.Advisory.Api/1.0.0": {
+      "type": "project",
+      "path": "../FarmManagement.Modules.Advisory/FarmManagement.Modules.Advisory.Api/FarmManagement.Modules.Advisory.Api.csproj",
+      "msbuildProject": "../FarmManagement.Modules.Advisory/FarmManagement.Modules.Advisory.Api/FarmManagement.Modules.Advisory.Api.csproj"
+    },
+    "FarmManagement.Modules.Advisory.Application/1.0.0": {
+      "type": "project",
+      "path": "../FarmManagement.Modules.Advisory/FarmManagement.Modules.Advisory.Application/FarmManagement.Modules.Advisory.Application.csproj",
+      "msbuildProject": "../FarmManagement.Modules.Advisory/FarmManagement.Modules.Advisory.Application/FarmManagement.Modules.Advisory.Application.csproj"
+    },
+    "FarmManagement.Modules.Advisory.Domain/1.0.0": {
+      "type": "project",
+      "path": "../FarmManagement.Modules.Advisory/FarmManagement.Modules.Advisory.Domain/FarmManagement.Modules.Advisory.Domain.csproj",
+      "msbuildProject": "../FarmManagement.Modules.Advisory/FarmManagement.Modules.Advisory.Domain/FarmManagement.Modules.Advisory.Domain.csproj"
+    },
+    "FarmManagement.SharedKernel/1.0.0": {
+      "type": "project",
+      "path": "../FarmManagement.SharedKernel/FarmManagement.SharedKernel.csproj",
+      "msbuildProject": "../FarmManagement.SharedKernel/FarmManagement.SharedKernel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "FarmManagement.Modules.Advisory.Api >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bemnet\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\hasse\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.WebApi\\FarmManagement.WebApi.csproj",
+      "projectUniqueName": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.WebApi\\FarmManagement.WebApi.csproj",
       "projectName": "FarmManagement.WebApi",
-      "projectPath": "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.WebApi\\FarmManagement.WebApi.csproj",
-      "packagesPath": "C:\\Users\\Bemnet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bemnet\\Desktop\\ead_backend\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.WebApi\\obj\\",
+      "projectPath": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.WebApi\\FarmManagement.WebApi.csproj",
+      "packagesPath": "C:\\Users\\hasse\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.WebApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Bemnet\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\hasse\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Modules.Advisory\\FarmManagement.Modules.Advisory.Api\\FarmManagement.Modules.Advisory.Api.csproj": {
+              "projectPath": "C:\\Users\\hasse\\OneDrive\\Documents\\farmwise-platform-backend\\FarmManagement\\src\\FarmManagement.Modules.Advisory\\FarmManagement.Modules.Advisory.Api\\FarmManagement.Modules.Advisory.Api.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
