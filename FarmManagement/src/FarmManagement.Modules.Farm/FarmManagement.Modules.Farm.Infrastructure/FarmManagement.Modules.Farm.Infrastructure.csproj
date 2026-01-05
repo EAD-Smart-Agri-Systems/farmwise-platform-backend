@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarmManagement.Modules.Farm.Application\FarmManagement.Modules.Farm.Application.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Farm.Domain\FarmManagement.Modules.Farm.Domain.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+=======
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -7,3 +23,4 @@
   </PropertyGroup>
 
 </Project>
+>>>>>>> a086fa2aac50ae0d687e38b4e146435def8de96b

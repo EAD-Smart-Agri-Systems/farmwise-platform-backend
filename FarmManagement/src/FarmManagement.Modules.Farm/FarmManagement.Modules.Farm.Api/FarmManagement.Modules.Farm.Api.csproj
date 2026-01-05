@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarmManagement.Modules.Farm.Application\FarmManagement.Modules.Farm.Application.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Farm.Infrastructure\FarmManagement.Modules.Farm.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
+=======
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
@@ -11,3 +31,4 @@
   </ItemGroup>
 
 </Project>
+>>>>>>> a086fa2aac50ae0d687e38b4e146435def8de96b
