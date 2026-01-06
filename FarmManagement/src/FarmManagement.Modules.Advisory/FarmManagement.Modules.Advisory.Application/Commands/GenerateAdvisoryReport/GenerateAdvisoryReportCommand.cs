@@ -1,9 +1,10 @@
 namespace FarmManagement.Modules.Advisory.Application.Commands.GenerateAdvisoryReport;
 
-public class GenerateAdvisoryReportCommand
-{
-    public Guid FarmId { get; init; }
-    public string CropType { get; init; } = default!;
-    public string WeatherCondition { get; init; } = default!;
-    public string Recommendation { get; init; } = default!;
-}
+public sealed record GenerateAdvisoryReportCommand(
+    Guid FarmId,
+    string CropType,
+    double Temperature,
+    double Humidity,
+    string WeatherCondition,
+    string Recommendation
+);

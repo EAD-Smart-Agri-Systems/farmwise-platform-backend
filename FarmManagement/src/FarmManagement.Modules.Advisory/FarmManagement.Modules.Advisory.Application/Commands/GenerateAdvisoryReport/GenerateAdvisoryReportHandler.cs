@@ -1,6 +1,6 @@
-using FarmManagement.Modules.Advisory.Application.Interfaces;
 using FarmManagement.Modules.Advisory.Domain.Aggregates;
-using FarmManagement.Modules.Advisory.Domain.Services;
+using FarmManagement.Modules.Advisory.Application.Interfaces;
+
 
 namespace FarmManagement.Modules.Advisory.Application.Commands.GenerateAdvisoryReport;
 
@@ -21,7 +21,8 @@ public class GenerateAdvisoryReportHandler
     {
         var pestRiskLevel = _riskService.AssessRisk(
             command.CropType,
-            command.WeatherCondition);
+            command.Temperature,
+            command.Humidity);
 
         var report = AdvisoryReport.Generate(
             command.FarmId,
