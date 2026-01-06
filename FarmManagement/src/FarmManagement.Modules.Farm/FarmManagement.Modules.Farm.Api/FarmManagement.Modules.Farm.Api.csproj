@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FarmManagement.Modules.Farm.Application\FarmManagement.Modules.Farm.Application.csproj" />
-    <ProjectReference Include="..\FarmManagement.Modules.Farm.Infrastructure\FarmManagement.Modules.Farm.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

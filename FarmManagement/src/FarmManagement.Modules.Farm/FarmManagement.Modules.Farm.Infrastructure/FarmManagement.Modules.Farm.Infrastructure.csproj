@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FarmManagement.Modules.Farm.Application\FarmManagement.Modules.Farm.Application.csproj" />
     <ProjectReference Include="..\FarmManagement.Modules.Farm.Domain\FarmManagement.Modules.Farm.Domain.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.Infrastructure.Shared\FarmManagement.Infrastructure.Shared.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
