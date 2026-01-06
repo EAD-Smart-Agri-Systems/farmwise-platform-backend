@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FarmManagement.Modules.Advisory.Application\FarmManagement.Modules.Advisory.Application.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Advisory.Infrastructure\FarmManagement.Modules.Advisory.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
