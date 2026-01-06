@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FarmManagement.Infrastructure.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea373224826d2371e283620271a43accf9716cb3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f79e6a49008ff79d4246a4aeb3d7eb21cec7f95b")]
 [assembly: System.Reflection.AssemblyProductAttribute("FarmManagement.Infrastructure.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FarmManagement.Infrastructure.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

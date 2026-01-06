@@ -4,8 +4,5 @@ namespace FarmManagement.Modules.Advisory.Domain.Services;
 
 public interface IAdvisoryRiskAssessmentService
 {
-    PestRiskLevel AssessPestRisk(
-        double temperature,
-        double humidity,
-        bool recentPestSightings);
+    PestRiskLevel AssessRisk(string cropType, string weatherCondition);
 }

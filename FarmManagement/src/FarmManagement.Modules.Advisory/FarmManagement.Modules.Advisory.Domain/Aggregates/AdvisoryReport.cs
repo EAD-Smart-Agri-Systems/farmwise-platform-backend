@@ -1,33 +1,42 @@
 using FarmManagement.SharedKernel.Domain;
 using FarmManagement.Modules.Advisory.Domain.ValueObjects;
-using FarmManagement.Modules.Advisory.Domain.Events;
 
 namespace FarmManagement.Modules.Advisory.Domain.Aggregates;
 
 public class AdvisoryReport : AggregateRoot
 {
     public Guid FarmId { get; private set; }
-    public Guid CropCycleId { get; private set; }
-
-    public PestRiskLevel PestRisk { get; private set; }
-    public string Recommendation { get; private set; }
-
+    public string CropType { get; private set; } = default!;
+    public PestRiskLevel PestRiskLevel { get; private set; } = default!;
+    public string Recommendation { get; private set; } = default!;
     public DateTime GeneratedOn { get; private set; }
 
-    private AdvisoryReport() { } // EF / serialization
+    private AdvisoryReport() { }
 
-    public AdvisoryReport(
+    private AdvisoryReport(
         Guid farmId,
-        Guid cropCycleId,
-        PestRiskLevel pestRisk,
+        string cropType,
+        PestRiskLevel pestRiskLevel,
         string recommendation)
     {
+        Id = Guid.NewGuid();
         FarmId = farmId;
-        CropCycleId = cropCycleId;
-        PestRisk = pestRisk;
+        CropType = cropType;
+        PestRiskLevel = pestRiskLevel;
         Recommendation = recommendation;
         GeneratedOn = DateTime.UtcNow;
+    }
 
-        RaiseDomainEvent(new AdvisoryGeneratedEvent(Id, FarmId));
+    public static AdvisoryReport Generate(
+        Guid farmId,
+        string cropType,
+        PestRiskLevel pestRiskLevel,
+        string recommendation)
+    {
+        return new AdvisoryReport(
+            farmId,
+            cropType,
+            pestRiskLevel,
+            recommendation);
     }
 }
