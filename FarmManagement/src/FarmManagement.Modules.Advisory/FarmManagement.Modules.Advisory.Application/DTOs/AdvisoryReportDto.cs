@@ -1,5 +1,4 @@
 namespace FarmManagement.Modules.Advisory.Application.DTOs;
-
 public class AdvisoryReportDto
 {
     public Guid Id { get; set; }
