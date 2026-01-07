@@ -18,8 +18,9 @@ public sealed class CropCycle : AggregateRoot
     public CropCycleStatus Status { get; private set; }
     public YieldRecord? YieldRecord { get; private set; }
 
+    #pragma warning disable CS8618
     private CropCycle() { } // EF Core
-
+    #pragma warning restore CS8618
     private CropCycle(
         CropCycleId id,
         FarmId farmId,
