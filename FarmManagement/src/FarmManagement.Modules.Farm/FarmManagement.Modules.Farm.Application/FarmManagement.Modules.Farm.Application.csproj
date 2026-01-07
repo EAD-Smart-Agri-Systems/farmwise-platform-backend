@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FarmManagement.Modules.Farm.Domain\FarmManagement.Modules.Farm.Domain.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.SharedKernel\FarmManagement.SharedKernel.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
