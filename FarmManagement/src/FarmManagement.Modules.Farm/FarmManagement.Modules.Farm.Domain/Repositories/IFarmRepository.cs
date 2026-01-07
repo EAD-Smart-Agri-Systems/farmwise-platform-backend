@@ -1,5 +1,6 @@
 using FarmManagement.Modules.Farm.Domain.Aggregates.FarmAggregate;
 using FarmManagement.Modules.Farm.Domain.ValueObjects;
+using FarmManagement.SharedKernel.Domain;
 
 namespace FarmManagement.Modules.Farm.Domain.Repositories;
 
