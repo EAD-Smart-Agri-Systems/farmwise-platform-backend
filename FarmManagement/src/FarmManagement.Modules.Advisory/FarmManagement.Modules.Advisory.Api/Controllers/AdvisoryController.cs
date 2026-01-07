@@ -6,14 +6,10 @@ namespace FarmManagement.Modules.Advisory.Api.Controllers;
 
 [ApiController]
 [Route("api/advisory")]
-public class AdvisoryController : ControllerBase
+public class AdvisoryController(
+    GenerateAdvisoryReportHandler handler) : ControllerBase
 {
-    private readonly GenerateAdvisoryReportHandler _handler;
-
-    public AdvisoryController(GenerateAdvisoryReportHandler handler)
-    {
-        _handler = handler;
-    }
+    private readonly GenerateAdvisoryReportHandler _handler = handler;
 
     [HttpPost("reports")]
     public async Task<IActionResult> GenerateReport(
