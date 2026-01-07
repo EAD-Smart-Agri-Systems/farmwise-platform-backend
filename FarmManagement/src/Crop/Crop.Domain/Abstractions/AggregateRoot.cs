@@ -1,19 +1,15 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Crop.Domain.Abstractions;
 
 public abstract class AggregateRoot
 {
-    private readonly List<DomainEvent> _domainEvents = new();
+    private readonly List<object> _domainEvents = new();
 
-    public IReadOnlyCollection<DomainEvent> DomainEvents =>
-        new ReadOnlyCollection<DomainEvent>(_domainEvents);
+    public IReadOnlyCollection<object> DomainEvents => _domainEvents.AsReadOnly();
 
-    protected void RaiseDomainEvent(DomainEvent domainEvent)
+    protected void AddDomainEvent(object domainEvent)
     {
-        if (domainEvent is null)
-            throw new ArgumentNullException(nameof(domainEvent));
-
         _domainEvents.Add(domainEvent);
     }
 
