@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Crop.Application\Crop.Application.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Crop.Application\Crop.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
