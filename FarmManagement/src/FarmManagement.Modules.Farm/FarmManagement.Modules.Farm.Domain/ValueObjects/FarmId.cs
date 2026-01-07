@@ -1,18 +1,13 @@
-using FarmManagement.SharedKernel.Domain;
-
 namespace FarmManagement.Modules.Farm.Domain.ValueObjects;
 
-public sealed class FarmId : ValueObject
+public sealed record FarmId(Guid Value)
 {
-    public Guid Value { get; }
-
-    private FarmId(Guid value) => Value = value;
-
-    public static FarmId New() => new(Guid.NewGuid());
-
-    protected override IEnumerable<object> GetEqualityComponents()
+    public static FarmId From(Guid value)
     {
-        yield return Value;
+        if (value == Guid.Empty)
+            throw new ArgumentException("FarmId cannot be empty.");
+
+        return new FarmId(value);
     }
 }
 
