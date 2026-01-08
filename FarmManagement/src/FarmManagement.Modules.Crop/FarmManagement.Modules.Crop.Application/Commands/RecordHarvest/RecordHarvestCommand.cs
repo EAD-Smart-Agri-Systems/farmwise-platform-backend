@@ -1,4 +1,4 @@
-using System;
+using MediatR;
 
 namespace FarmManagement.Modules.Crop.Application.Commands.RecordHarvest;
 
@@ -7,4 +7,4 @@ public sealed record RecordHarvestCommand(
     double Quantity,
     string Unit,
     DateTime HarvestDate
-);
+) : IRequest;

@@ -1,10 +1,11 @@
+using MediatR;
 using FarmManagement.Modules.Crop.Application.Interfaces;
 using FarmManagement.Modules.Crop.Domain.Enums;
 using FarmManagement.Modules.Crop.Domain.ValueObjects;
 
 namespace FarmManagement.Modules.Crop.Application.Commands.RecordHarvest;
 
-public sealed class RecordHarvestHandler
+public sealed class RecordHarvestHandler : IRequestHandler<RecordHarvestCommand>
 {
     private readonly ICropCycleRepository _repository;
 
@@ -13,24 +14,24 @@ public sealed class RecordHarvestHandler
         _repository = repository;
     }
 
-    public async Task HandleAsync(RecordHarvestCommand command)
+    public async Task Handle(RecordHarvestCommand request, CancellationToken cancellationToken)
     {
         var cropCycle = await _repository.GetByIdAsync(
-            CropCycleId.From(command.CropCycleId)
+            CropCycleId.From(request.CropCycleId)
         );
 
         if (cropCycle is null)
             throw new InvalidOperationException("Crop cycle not found.");
 
         var unit = Enum.Parse<YieldUnit>(
-            command.Unit,
+            request.Unit,
             ignoreCase: true
         );
 
         var yieldRecord = YieldRecord.Create(
-            (float)command.Quantity,
+            (float)request.Quantity,
             unit,
-            command.HarvestDate
+            request.HarvestDate
         );
 
         cropCycle.RecordHarvest(yieldRecord);
