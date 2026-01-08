@@ -1,10 +1,11 @@
+using MediatR;
 using FarmManagement.Modules.Crop.Application.Interfaces;
 using FarmManagement.Modules.Crop.Domain.Enums;
 using FarmManagement.Modules.Crop.Domain.ValueObjects;
 
 namespace FarmManagement.Modules.Crop.Application.Commands.AdvanceGrowthStage;
 
-public sealed class AdvanceGrowthStageHandler
+public sealed class AdvanceGrowthStageHandler : IRequestHandler<AdvanceGrowthStageCommand>
 {
     private readonly ICropCycleRepository _repository;
 
@@ -13,17 +14,17 @@ public sealed class AdvanceGrowthStageHandler
         _repository = repository;
     }
 
-    public async Task HandleAsync(AdvanceGrowthStageCommand command)
+    public async Task Handle(AdvanceGrowthStageCommand request, CancellationToken cancellationToken)
     {
         var cropCycle = await _repository.GetByIdAsync(
-            CropCycleId.From(command.CropCycleId)
+            CropCycleId.From(request.CropCycleId)
         );
 
         if (cropCycle is null)
             throw new InvalidOperationException("Crop cycle not found.");
 
         var newStage = Enum.Parse<GrowthStage>(
-            command.NewStage,
+            request.NewStage,
             ignoreCase: true
         );
 
