@@ -1,10 +1,12 @@
-using FarmManagement.Modules.Crop.Application.Interfaces;
+using MediatR;
 using FarmManagement.Modules.Crop.Domain.Aggregates;
 using FarmManagement.Modules.Crop.Domain.ValueObjects;
+using FarmManagement.Modules.Crop.Domain.Enums;
+using FarmManagement.Modules.Crop.Application.Commands.StartCropCycle;
+using FarmManagement.Modules.Crop.Application.Interfaces;
+using FarmManagement.SharedKernel.Domain;
 
-namespace FarmManagement.Modules.Crop.Application.Commands.StartCropCycle;
-
-public sealed class StartCropCycleHandler
+public sealed class StartCropCycleHandler : IRequestHandler<StartCropCycleCommand, Guid>
 {
     private readonly ICropCycleRepository _repository;
 
@@ -13,23 +15,19 @@ public sealed class StartCropCycleHandler
         _repository = repository;
     }
 
-    public async Task HandleAsync(StartCropCycleCommand command)
+    public async Task<Guid> Handle(StartCropCycleCommand request, CancellationToken cancellationToken)
     {
-        var cropType = CropType.Create(
-            command.CropCode,
-            command.CropName,
-            command.TypicalStages,
-            command.DurationDays
-        );
-
+        // Pass raw Guids directly to CropCycle.Start
         var cropCycle = CropCycle.Start(
-            FarmId.From(command.FarmId),
-            FieldId.From(command.FieldId),
-            cropType,
-            command.PlantingDate
+            request.FarmId,
+            request.FieldId,
+            request.CropType,
+            request.PlantingDate
         );
 
         await _repository.AddAsync(cropCycle);
         await _repository.SaveChangesAsync();
+
+        return cropCycle.Id.Value; // return the Guid
     }
 }

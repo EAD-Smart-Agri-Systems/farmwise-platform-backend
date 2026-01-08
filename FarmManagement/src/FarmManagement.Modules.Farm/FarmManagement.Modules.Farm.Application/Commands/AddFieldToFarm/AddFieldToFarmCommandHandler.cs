@@ -1,6 +1,7 @@
 using FarmManagement.Modules.Farm.Domain.Aggregates.FarmAggregate;
 using FarmManagement.Modules.Farm.Domain.Repositories;
 using FarmManagement.Modules.Farm.Domain.ValueObjects;
+using FarmManagement.SharedKernel.Domain;
 
 namespace FarmManagement.Modules.Farm.Application.Commands.AddFieldToFarm;
 
