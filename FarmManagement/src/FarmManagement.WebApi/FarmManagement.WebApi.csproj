@@ -13,6 +13,11 @@
   <ItemGroup>
     <ProjectReference Include="..\FarmManagement.Modules.Farm\FarmManagement.Modules.Farm.Api\FarmManagement.Modules.Farm.Api.csproj" />
     <ProjectReference Include="..\FarmManagement.Infrastructure.Shared\FarmManagement.Infrastructure.Shared.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Advisory\FarmManagement.Modules.Advisory.Api\FarmManagement.Modules.Advisory.Api.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Advisory\FarmManagement.Modules.Advisory.Infrastructure\FarmManagement.Modules.Advisory.Infrastructure.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Farm\FarmManagement.Modules.Farm.Infrastructure\FarmManagement.Modules.Farm.Infrastructure.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Crop\FarmManagement.Modules.Crop.Api\Crop.Api.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Crop\FarmManagement.Modules.Crop.Infrastructure\Crop.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
