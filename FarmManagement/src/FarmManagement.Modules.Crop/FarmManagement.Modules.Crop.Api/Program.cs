@@ -12,7 +12,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddCropApplication();
 
 // Register Infrastructure layer (DbContext, Repositories)
-builder.Services.AddCropInfrastructure();
+builder.Services.AddCropInfrastructure(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
