@@ -12,10 +12,13 @@ public static class ModulesExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddAdvisoryInfrastructure(
-            configuration.GetConnectionString("AdvisoryDb")!);
+        // Advisory module
+        services.AddAdvisoryInfrastructure(configuration);
 
+        // Crop module
         services.AddCropInfrastructure(configuration);
+
+        // Farm module
         services.AddFarmInfrastructure(configuration);
 
         return services;
