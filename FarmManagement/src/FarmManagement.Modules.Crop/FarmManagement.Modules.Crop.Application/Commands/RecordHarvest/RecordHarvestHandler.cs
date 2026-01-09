@@ -36,6 +36,6 @@ public sealed class RecordHarvestHandler : IRequestHandler<RecordHarvestCommand>
 
         cropCycle.RecordHarvest(yieldRecord);
 
-        await _repository.SaveChangesAsync();
+        await _repository.SaveChangesAsync(cancellationToken);
     }
 }

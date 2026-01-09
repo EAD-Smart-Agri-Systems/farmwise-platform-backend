@@ -1,5 +1,8 @@
+using FarmManagement.Infrastructure.Shared.DependencyInjection;
 using FarmManagement.Modules.Advisory.Infrastructure;
+using FarmManagement.Modules.Crop.Application;
 using FarmManagement.Modules.Crop.Infrastructure;
+using FarmManagement.Modules.Farm.Application;
 using FarmManagement.Modules.Farm.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,13 +15,17 @@ public static class ModulesExtensions
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Advisory module
+        // Register Infrastructure.Shared (RabbitMQ, Outbox, Quartz)
+        services.AddInfrastructureShared(configuration);
+
+        // Register Application layers
+        services.AddCropApplication();
+        services.AddFarmApplication();
+
+        // Register Infrastructure layers
         services.AddAdvisoryInfrastructure(configuration);
 
-        // Crop module
         services.AddCropInfrastructure(configuration);
-
-        // Farm module
         services.AddFarmInfrastructure(configuration);
 
         return services;

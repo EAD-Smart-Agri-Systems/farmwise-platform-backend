@@ -13,7 +13,7 @@ public sealed class RegisterFarmCommandHandler
         _farmRepository = farmRepository;
     }
 
-    public async Task Handle(RegisterFarmCommand command)
+    public async Task Handle(RegisterFarmCommand command, CancellationToken cancellationToken = default)
     {
         var name = new FarmName(command.Name);
         var location = new Location(command.Latitude, command.Longitude);
@@ -21,6 +21,7 @@ public sealed class RegisterFarmCommandHandler
         var farm = FarmFactory.Create(name, location);
 
         await _farmRepository.AddAsync(farm);
+        await _farmRepository.SaveChangesAsync(cancellationToken);
     }
 }
 

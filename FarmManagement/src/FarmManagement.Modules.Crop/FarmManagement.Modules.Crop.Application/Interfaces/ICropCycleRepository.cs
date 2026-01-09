@@ -8,6 +8,6 @@ namespace FarmManagement.Modules.Crop.Application.Interfaces
     {
         Task AddAsync(CropCycle cropCycle);
         Task<CropCycle?> GetByIdAsync(CropCycleId id);
-        Task SaveChangesAsync();
+        Task SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

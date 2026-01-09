@@ -14,7 +14,7 @@ public sealed class AddFieldToFarmCommandHandler
         _farmRepository = farmRepository;
     }
 
-    public async Task Handle(AddFieldToFarmCommand command)
+    public async Task Handle(AddFieldToFarmCommand command, CancellationToken cancellationToken = default)
     {
         var farmId = FarmId.From(command.FarmId);
 
@@ -26,6 +26,7 @@ public sealed class AddFieldToFarmCommandHandler
         var field = new Field(FieldId.New(), command.FieldName);
 
         farm.AddField(field);
+        await _farmRepository.SaveChangesAsync(cancellationToken);
     }
 }
 
