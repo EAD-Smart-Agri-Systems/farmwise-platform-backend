@@ -7,6 +7,13 @@
     <ProjectReference Include="..\..\FarmManagement.SharedKernel\FarmManagement.SharedKernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -14,3 +21,19 @@
   </PropertyGroup>
 
 </Project>
+<!-- <Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarmManagement.Modules.Farm.Application\FarmManagement.Modules.Farm.Application.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Farm.Domain\FarmManagement.Modules.Farm.Domain.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.Infrastructure.Shared\FarmManagement.Infrastructure.Shared.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.SharedKernel\FarmManagement.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project> -->
