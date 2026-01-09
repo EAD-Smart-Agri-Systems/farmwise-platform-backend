@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # SQL Server for database
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: farmwise-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P YourStrong@Passw0rd -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # RabbitMQ for message broker
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: farmwise-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"   # AMQP port
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # Keycloak for authentication and authorization
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: farmwise-keycloak
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=mssql
+      - KC_DB_URL_HOST=sqlserver
+      - KC_DB_URL_PORT=1433
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_USERNAME=sa
+      - KC_DB_PASSWORD=YourStrong@Passw0rd
+      - KC_DB_DRIVER=mssql
+      - KC_HEALTH_ENABLED=true
+      - KC_METRICS_ENABLED=true
+    ports:
+      - "8080:8080"
+    command: start-dev --import-realm
+    volumes:
+      - ./docs/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json:ro
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  sqlserver_data:
+  rabbitmq_data:

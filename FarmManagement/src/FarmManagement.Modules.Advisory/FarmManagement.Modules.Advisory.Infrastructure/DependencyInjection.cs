@@ -15,10 +15,10 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddAdvisoryInfrastructure(
         this IServiceCollection services,
-        string connectionString)
+        IConfiguration configuration)
     {
         services.AddDbContext<AdvisoryDbContext>(options =>
-            options.UseSqlServer(connectionString));
+            options.UseSqlServer(configuration.GetConnectionString("AdvisoryDb")));
 
         services.AddScoped<IAdvisoryReportRepository, AdvisoryReportRepository>();
         services.AddScoped<IAdvisoryRiskAssessmentService, AdvisoryRiskAssessmentService>();

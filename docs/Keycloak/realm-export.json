@@ -1,0 +1,78 @@
+{
+  "realm": "farm-management",
+  "enabled": true,
+  "displayName": "Farm Management Realm",
+  "clients": [
+    {
+      "clientId": "farm-management-api",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "farm-management-api-secret",
+      "redirectUris": ["*"],
+      "webOrigins": ["*"],
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect",
+      "attributes": {
+        "access.token.lifespan": "300",
+        "access.token.audience": "farm-management-api"
+      }
+    }
+  ],
+  "roles": {
+    "realm": [
+      {
+        "name": "Admin",
+        "description": "Administrator role - can define cropType and soilProfile"
+      },
+      {
+        "name": "User",
+        "description": "Standard user role - can do everything except define cropType and soilProfile"
+      }
+    ]
+  },
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "admin@farmwise.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["Admin"],
+      "groups": []
+    },
+    {
+      "username": "user",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "user@farmwise.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "user123",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["User"],
+      "groups": []
+    }
+  ],
+  "groups": [],
+  "defaultRoles": ["User"],
+  "requiredCredentials": ["password"],
+  "otpPolicyType": "totp",
+  "otpPolicyAlgorithm": "HmacSHA1",
+  "otpPolicyInitialCounter": 0,
+  "otpPolicyDigits": 6,
+  "otpPolicyLookAheadWindow": 1,
+  "otpPolicyPeriod": 30
+}
