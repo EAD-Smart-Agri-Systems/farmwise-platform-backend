@@ -1,15 +1,12 @@
-# Multi-stage build: download driver in a base image, then copy to Keycloak
-FROM alpine:latest AS downloader
-RUN apk add --no-cache curl && \
-    curl -L -o /tmp/mssql-jdbc.jar https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/12.4.2.jre11/mssql-jdbc-12.4.2.jre11.jar
-
 FROM quay.io/keycloak/keycloak:latest
 
-# Copy SQL Server JDBC driver from downloader stage
+# Download and install SQL Server JDBC driver using Docker's ADD (supports URLs)
 USER root
 RUN mkdir -p /opt/keycloak/providers
-COPY --from=downloader /tmp/mssql-jdbc.jar /opt/keycloak/providers/mssql-jdbc.jar
+ADD https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/12.4.2.jre11/mssql-jdbc-12.4.2.jre11.jar /opt/keycloak/providers/mssql-jdbc.jar
 RUN chown keycloak:keycloak /opt/keycloak/providers/mssql-jdbc.jar && \
     chmod 644 /opt/keycloak/providers/mssql-jdbc.jar
 
+# Build Keycloak with SQL Server driver
 USER keycloak
+RUN /opt/keycloak/bin/kc.sh build --db=mssql

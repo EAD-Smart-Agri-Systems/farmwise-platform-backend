@@ -7,13 +7,14 @@ Write-Host ""
 # Check if SQL Server is accessible
 Write-Host "Checking SQL Server connection..." -ForegroundColor Yellow
 $connectionString = "Server=localhost,1433;Database=master;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;Connect Timeout=5"
+
 try {
     $connection = New-Object System.Data.SqlClient.SqlConnection($connectionString)
     $connection.Open()
     $connection.Close()
-    Write-Host "✓ SQL Server is accessible" -ForegroundColor Green
+    Write-Host "[OK] SQL Server is accessible" -ForegroundColor Green
 } catch {
-    Write-Host "✗ Cannot connect to SQL Server. Make sure Docker services are running:" -ForegroundColor Red
+    Write-Host "[ERROR] Cannot connect to SQL Server. Make sure Docker services are running:" -ForegroundColor Red
     Write-Host "  docker-compose up -d" -ForegroundColor Yellow
     exit 1
 }
@@ -31,9 +32,9 @@ $farmContext = "FarmManagement.Modules.Farm.Infrastructure.Persistence.FarmDbCon
 dotnet ef database update --project $farmPath --startup-project $farmStartup --context $farmContext
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Farm database updated successfully" -ForegroundColor Green
+    Write-Host "[OK] Farm database updated successfully" -ForegroundColor Green
 } else {
-    Write-Host "✗ Failed to update Farm database" -ForegroundColor Red
+    Write-Host "[ERROR] Failed to update Farm database" -ForegroundColor Red
 }
 
 # Crop Module
@@ -45,9 +46,9 @@ $cropContext = "FarmManagement.Modules.Crop.Infrastructure.Persistence.CropDbCon
 dotnet ef database update --project $cropPath --startup-project $farmStartup --context $cropContext
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Crop database updated successfully" -ForegroundColor Green
+    Write-Host "[OK] Crop database updated successfully" -ForegroundColor Green
 } else {
-    Write-Host "✗ Failed to update Crop database" -ForegroundColor Red
+    Write-Host "[ERROR] Failed to update Crop database" -ForegroundColor Red
 }
 
 # Advisory Module
@@ -59,9 +60,9 @@ $advisoryContext = "FarmManagement.Modules.Advisory.Infrastructure.Persistence.A
 dotnet ef database update --project $advisoryPath --startup-project $farmStartup --context $advisoryContext
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Advisory database updated successfully" -ForegroundColor Green
+    Write-Host "[OK] Advisory database updated successfully" -ForegroundColor Green
 } else {
-    Write-Host "✗ Failed to update Advisory database" -ForegroundColor Red
+    Write-Host "[ERROR] Failed to update Advisory database" -ForegroundColor Red
 }
 
 Write-Host ""

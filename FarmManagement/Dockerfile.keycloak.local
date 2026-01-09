@@ -1,0 +1,12 @@
+FROM quay.io/keycloak/keycloak:latest
+
+# Copy SQL Server JDBC driver from local file
+USER root
+RUN mkdir -p /opt/keycloak/providers
+COPY mssql-jdbc.jar /opt/keycloak/providers/mssql-jdbc.jar
+RUN chown keycloak:keycloak /opt/keycloak/providers/mssql-jdbc.jar && \
+    chmod 644 /opt/keycloak/providers/mssql-jdbc.jar
+
+# Build Keycloak with SQL Server driver
+USER keycloak
+RUN /opt/keycloak/bin/kc.sh build --db=mssql
