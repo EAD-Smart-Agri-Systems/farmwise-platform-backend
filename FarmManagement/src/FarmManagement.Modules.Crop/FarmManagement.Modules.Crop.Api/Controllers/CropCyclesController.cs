@@ -5,12 +5,14 @@ using FarmManagement.Modules.Crop.Application.Commands.StartCropCycle;
 using FarmManagement.Modules.Crop.Application.Queries.GetCropCycleDetails;
 using FarmManagement.Modules.Crop.Domain.ValueObjects;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmManagement.Modules.Crop.Api.Controllers;
 
 [ApiController]
 [Route("api/crop-cycles")]
+[Authorize] // All endpoints require authentication
 public class CropCyclesController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -21,6 +23,7 @@ public class CropCyclesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = "FarmerOrAdmin")]
     public async Task<IActionResult> StartCropCycle(
         [FromBody] StartCropCycleRequest request,
         CancellationToken cancellationToken)
@@ -48,6 +51,7 @@ public class CropCyclesController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize(Policy = "FarmerOrAdmin")]
     public async Task<IActionResult> GetCropCycleDetails(
         Guid id,
         CancellationToken cancellationToken)
@@ -59,6 +63,7 @@ public class CropCyclesController : ControllerBase
     }
 
     [HttpPost("{id}/advance-stage")]
+    [Authorize(Policy = "FarmerOrAdmin")]
     public async Task<IActionResult> AdvanceGrowthStage(
         Guid id,
         [FromBody] AdvanceGrowthStageRequest request,
@@ -75,6 +80,7 @@ public class CropCyclesController : ControllerBase
     }
 
     [HttpPost("{id}/harvest")]
+    [Authorize(Policy = "FarmerOrAdmin")]
     public async Task<IActionResult> RecordHarvest(
         Guid id,
         [FromBody] RecordHarvestRequest request,

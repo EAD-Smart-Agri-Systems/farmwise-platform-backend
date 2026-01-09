@@ -1,5 +1,4 @@
 using FarmManagement.SharedKernel.Domain;
-using FarmManagement.Modules.Farm.Domain.ValueObjects;
 
 namespace FarmManagement.Modules.Farm.Domain.Aggregates.FarmAggregate;
 

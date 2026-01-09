@@ -1,4 +1,3 @@
-
 using FarmManagement.SharedKernel.Domain;
 using FarmManagement.Modules.Farm.Domain.ValueObjects;
 

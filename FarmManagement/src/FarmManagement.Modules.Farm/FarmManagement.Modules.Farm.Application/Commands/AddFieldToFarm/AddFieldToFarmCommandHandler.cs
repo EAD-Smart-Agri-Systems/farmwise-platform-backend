@@ -1,11 +1,11 @@
+using MediatR;
 using FarmManagement.Modules.Farm.Domain.Aggregates.FarmAggregate;
 using FarmManagement.Modules.Farm.Domain.Repositories;
-using FarmManagement.Modules.Farm.Domain.ValueObjects;
 using FarmManagement.SharedKernel.Domain;
 
 namespace FarmManagement.Modules.Farm.Application.Commands.AddFieldToFarm;
 
-public sealed class AddFieldToFarmCommandHandler
+public sealed class AddFieldToFarmCommandHandler : IRequestHandler<AddFieldToFarmCommand, Unit>
 {
     private readonly IFarmRepository _farmRepository;
 
@@ -14,19 +14,21 @@ public sealed class AddFieldToFarmCommandHandler
         _farmRepository = farmRepository;
     }
 
-    public async Task Handle(AddFieldToFarmCommand command, CancellationToken cancellationToken = default)
+    public async Task<Unit> Handle(AddFieldToFarmCommand request, CancellationToken cancellationToken)
     {
-        var farmId = FarmId.From(command.FarmId);
+        var farmId = FarmId.From(request.FarmId);
 
         var farm = await _farmRepository.GetByIdAsync(farmId);
 
         if (farm is null)
             throw new InvalidOperationException("Farm not found.");
 
-        var field = new Field(FieldId.New(), command.FieldName);
+        var field = new Field(FieldId.New(), request.FieldName);
 
         farm.AddField(field);
         await _farmRepository.SaveChangesAsync(cancellationToken);
+
+        return Unit.Value;
     }
 }
 

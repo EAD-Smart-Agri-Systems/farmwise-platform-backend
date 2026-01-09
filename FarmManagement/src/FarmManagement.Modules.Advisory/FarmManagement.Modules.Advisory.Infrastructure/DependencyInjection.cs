@@ -24,9 +24,11 @@ public static class DependencyInjection
         services.AddScoped<IAdvisoryRiskAssessmentService, AdvisoryRiskAssessmentService>();
         services.AddScoped<GenerateAdvisoryReportHandler>();
         services.AddScoped<CropCycleStartedEventHandler>();
+        services.AddScoped<GrowthStageAdvancedEventHandler>();
 
-        // Register background service for event subscription
+        // Register background services for event subscription
         services.AddHostedService<AdvisoryEventSubscriberService>();
+        services.AddHostedService<GrowthStageAdvancedSubscriberService>();
 
         return services;
     }

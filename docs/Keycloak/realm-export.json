@@ -25,11 +25,11 @@
   "roles": {
     "realm": [
       {
-        "name": "Admin",
+        "name": "admin",
         "description": "Administrator role - can define cropType and soilProfile"
       },
       {
-        "name": "User",
+        "name": "farmer",
         "description": "Standard user role - can do everything except define cropType and soilProfile"
       }
     ]
@@ -47,7 +47,7 @@
           "temporary": false
         }
       ],
-      "realmRoles": ["Admin"],
+      "realmRoles": ["admin"],
       "groups": []
     },
     {
@@ -62,12 +62,12 @@
           "temporary": false
         }
       ],
-      "realmRoles": ["User"],
+      "realmRoles": ["farmer"],
       "groups": []
     }
   ],
   "groups": [],
-  "defaultRoles": ["User"],
+  "defaultRoles": ["farmer"],
   "requiredCredentials": ["password"],
   "otpPolicyType": "totp",
   "otpPolicyAlgorithm": "HmacSHA1",

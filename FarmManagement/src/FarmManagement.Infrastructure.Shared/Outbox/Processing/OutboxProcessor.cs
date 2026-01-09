@@ -1,5 +1,6 @@
 using FarmManagement.Infrastructure.Shared.Configuration;
 using FarmManagement.Infrastructure.Shared.Messaging.Abstractions;
+using FarmManagement.Infrastructure.Shared.Messaging.Events;
 using FarmManagement.Infrastructure.Shared.Outbox.Abstractions;
 using FarmManagement.Infrastructure.Shared.Persistence.Abstractions;
 using Microsoft.Extensions.Logging;
@@ -43,38 +44,32 @@ public class OutboxProcessor
                 await _outboxRepository.MarkAsProcessingAsync(message.Id, cancellationToken);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-                var eventType = Type.GetType(message.EventType);
-                if (eventType == null)
+                // Convert domain event to integration event using mapper
+                var integrationEvent = IntegrationEventMapper.CreateIntegrationEvent(
+                    message.EventType,
+                    message.Payload);
+
+                if (integrationEvent == null)
                 {
                     _logger.LogWarning(
-                        "Event type {EventType} not found for outbox message {MessageId}",
+                        "Failed to map domain event {EventType} to integration event for outbox message {MessageId}",
                         message.EventType,
                         message.Id);
                     
                     await _outboxRepository.MarkAsFailedAsync(
                         message.Id,
-                        $"Event type {message.EventType} not found",
+                        $"Failed to map domain event {message.EventType} to integration event",
                         cancellationToken);
                     await _unitOfWork.SaveChangesAsync(cancellationToken);
                     continue;
                 }
 
-                var integrationEvent = JsonSerializer.Deserialize(message.Payload, eventType);
-                if (integrationEvent == null)
-                {
-                    _logger.LogWarning(
-                        "Failed to deserialize payload for outbox message {MessageId}",
-                        message.Id);
-                    
-                    await _outboxRepository.MarkAsFailedAsync(
-                        message.Id,
-                        "Failed to deserialize payload",
-                        cancellationToken);
-                    await _unitOfWork.SaveChangesAsync(cancellationToken);
-                    continue;
-                }
-
-                await _eventPublisher.PublishAsync(integrationEvent, cancellationToken);
+                // Publish integration event to RabbitMQ
+                // Use reflection to call PublishAsync with the correct type
+                var publishMethod = typeof(IEventPublisher).GetMethod("PublishAsync")!
+                    .MakeGenericMethod(integrationEvent.GetType());
+                var task = (Task)publishMethod.Invoke(_eventPublisher, new[] { integrationEvent, cancellationToken })!;
+                await task;
 
                 await _outboxRepository.MarkAsProcessedAsync(message.Id, cancellationToken);
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
