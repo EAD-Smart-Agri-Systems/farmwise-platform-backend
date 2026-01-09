@@ -40,7 +40,9 @@ services:
 
   # Keycloak for authentication and authorization
   keycloak:
-    image: quay.io/keycloak/keycloak:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.keycloak
     container_name: farmwise-keycloak
     environment:
       - KEYCLOAK_ADMIN=admin
@@ -56,7 +58,7 @@ services:
       - KC_METRICS_ENABLED=true
     ports:
       - "8080:8080"
-    command: start-dev --import-realm
+    command: ["sh", "-c", "/opt/keycloak/bin/kc.sh build --db=mssql && /opt/keycloak/bin/kc.sh start-dev --import-realm"]
     volumes:
       - ./docs/keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json:ro
     depends_on:
