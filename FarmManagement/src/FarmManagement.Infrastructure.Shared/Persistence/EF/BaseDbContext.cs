@@ -13,6 +13,22 @@ public abstract class BaseDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        // Ignore DomainEvent - it's not an entity, just a domain concept
+        modelBuilder.Ignore<FarmManagement.SharedKernel.Domain.DomainEvent>();
+
+         // Ignore DomainEvents collection on all AggregateRoot entities
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            if (typeof(FarmManagement.SharedKernel.Domain.AggregateRoot).IsAssignableFrom(entityType.ClrType))
+            {
+                var domainEventsProperty = entityType.ClrType.GetProperty("DomainEvents");
+                if (domainEventsProperty != null)
+                {
+                    modelBuilder.Entity(entityType.ClrType).Ignore("DomainEvents");
+                }
+            }
+        }
+
         // Configure OutboxMessage entity
         modelBuilder.Entity<OutboxMessage>(entity =>
         {

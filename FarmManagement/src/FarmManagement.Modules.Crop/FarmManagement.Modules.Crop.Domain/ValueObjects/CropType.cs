@@ -2,10 +2,15 @@ namespace FarmManagement.Modules.Crop.Domain.ValueObjects;
 
 public sealed class CropType : IEquatable<CropType>
 {
-    public int CropCode { get; }
-    public string Name { get; }
-    public string TypicalStages { get; }
-    public int DurationDays { get; }
+    public int CropCode { get; private set; }
+    public string Name { get; private set; }
+    public string TypicalStages { get; private set; }
+    public int DurationDays { get; private set; }
+
+    // Parameterless constructor for EF Core
+    #pragma warning disable CS8618
+    private CropType() { }
+    #pragma warning restore CS8618
 
     private CropType(int cropCode, string name, string typicalStages, int durationDays)
     {

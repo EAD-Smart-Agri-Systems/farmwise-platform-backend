@@ -19,10 +19,21 @@ internal sealed class FarmConfiguration : IEntityTypeConfiguration<FarmAggregate
                 id => id.Value,
                 value => FarmId.From(value));
 
+        builder.OwnsOne(f => f.Name, n =>
+        {
+            n.Property(name => name.Value)
+                .HasColumnName("Name")
+                .IsRequired()
+                .HasMaxLength(200);
+        });
+        
         builder.OwnsOne(f => f.Location);
 
         builder.HasMany(f => f.Fields)
             .WithOne()
             .OnDelete(DeleteBehavior.Cascade);
+
+        // Ignore DomainEvents collection - it's not persisted
+        builder.Ignore(f => f.DomainEvents);
     }
 }

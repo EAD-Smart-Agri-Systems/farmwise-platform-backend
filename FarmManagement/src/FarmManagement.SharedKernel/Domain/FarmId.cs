@@ -2,7 +2,14 @@ namespace FarmManagement.SharedKernel.Domain;
 
 public sealed class FarmId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
+
+    // Parameterless constructor for EF Core
+    private FarmId()
+    {
+        Value = Guid.Empty;
+    }
+
 
     private FarmId(Guid value)
     {

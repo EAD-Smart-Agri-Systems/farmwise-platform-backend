@@ -5,7 +5,13 @@ namespace FarmManagement.SharedKernel.Domain
 {
     public sealed class FieldId : IEquatable<FieldId>
     {
-        public Guid Value { get; }
+        public Guid Value { get; private set; }
+
+        // Parameterless constructor for EF Core
+        private FieldId()
+        {
+            Value = Guid.Empty;
+        }
 
         private FieldId(Guid value)
         {

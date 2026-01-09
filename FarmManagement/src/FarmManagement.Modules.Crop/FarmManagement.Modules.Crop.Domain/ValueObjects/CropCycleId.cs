@@ -2,7 +2,13 @@ namespace FarmManagement.Modules.Crop.Domain.ValueObjects;
 
 public sealed class CropCycleId : IEquatable<CropCycleId>
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
+
+    // Parameterless constructor for EF Core
+    private CropCycleId()
+    {
+        Value = Guid.Empty;
+    }
 
     private CropCycleId(Guid value)
     {

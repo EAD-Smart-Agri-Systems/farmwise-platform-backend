@@ -22,5 +22,8 @@ public class AdvisoryReportConfiguration : IEntityTypeConfiguration<AdvisoryRepo
         });
 
         builder.Property(x => x.Recommendation).IsRequired();
+
+        // Ignore DomainEvents collection - it's not persisted
+        builder.Ignore(x => x.DomainEvents);
     }
 }

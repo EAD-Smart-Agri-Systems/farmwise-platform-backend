@@ -4,9 +4,14 @@ namespace FarmManagement.Modules.Crop.Domain.ValueObjects;
 
 public sealed class YieldRecord : IEquatable<YieldRecord>
 {
-    public float Quantity { get; }
-    public YieldUnit Unit { get; }
-    public DateTime HarvestDate { get; }
+    public float Quantity { get; private set; }
+    public YieldUnit Unit { get; private set; }
+    public DateTime HarvestDate { get; private set; }
+
+    // Parameterless constructor for EF Core
+    #pragma warning disable CS8618
+    private YieldRecord() { }
+    #pragma warning restore CS8618
 
     private YieldRecord(float quantity, YieldUnit unit, DateTime harvestDate)
     {

@@ -10,6 +10,9 @@ $efInstalled = dotnet tool list -g | Select-String "dotnet-ef"
 if (-not $efInstalled) {
     Write-Host "Installing dotnet-ef tool..." -ForegroundColor Yellow
     dotnet tool install --global dotnet-ef
+} else {
+    Write-Host "Updating dotnet-ef tool to latest version..." -ForegroundColor Yellow
+    dotnet tool update --global dotnet-ef
 }
 
 Write-Host ""
@@ -29,9 +32,9 @@ dotnet ef migrations add InitialCreate `
   --output-dir "Persistence\Migrations"
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Farm migration created successfully" -ForegroundColor Green
+    Write-Host "[OK] Farm migration created successfully" -ForegroundColor Green
 } else {
-    Write-Host "✗ Failed to create Farm migration" -ForegroundColor Red
+    Write-Host "[FAILED] Failed to create Farm migration" -ForegroundColor Red
 }
 
 # Crop Module
@@ -47,9 +50,9 @@ dotnet ef migrations add InitialCreate `
   --output-dir "Persistence\Migrations"
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Crop migration created successfully" -ForegroundColor Green
+    Write-Host "[OK] Crop migration created successfully" -ForegroundColor Green
 } else {
-    Write-Host "✗ Failed to create Crop migration" -ForegroundColor Red
+    Write-Host "[FAILED] Failed to create Crop migration" -ForegroundColor Red
 }
 
 # Advisory Module
@@ -65,9 +68,9 @@ dotnet ef migrations add InitialCreate `
   --output-dir "Persistence\Migrations"
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Advisory migration created successfully" -ForegroundColor Green
+    Write-Host "[OK] Advisory migration created successfully" -ForegroundColor Green
 } else {
-    Write-Host "✗ Failed to create Advisory migration" -ForegroundColor Red
+    Write-Host "[FAILED] Failed to create Advisory migration" -ForegroundColor Red
 }
 
 Write-Host ""
