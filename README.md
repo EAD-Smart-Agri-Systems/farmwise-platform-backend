@@ -7,7 +7,7 @@
 |ETSUB NADEW|UGR/4283/15|
 |HASET WENDESEN|UGR/4331/15|
 
-# Farmwise Platform Backend
+# Farmwise Platform Backend - Initial Proposal
 
 ## 1. Problem Statement
 Smallholder farmers often struggle with limited access to timely agricultural information, including planting schedules, soil needs, crop health, climate patterns, fertilizer use, and pest control.
