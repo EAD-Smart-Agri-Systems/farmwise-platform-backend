@@ -3,6 +3,33 @@
   <ItemGroup>
     <ProjectReference Include="..\FarmManagement.Modules.Crop.Application\Crop.Application.csproj" />
     <ProjectReference Include="..\FarmManagement.Modules.Crop.Domain\Crop.Domain.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.Infrastructure.Shared\FarmManagement.Infrastructure.Shared.csproj" />
+    <ProjectReference Include="..\..\FarmManagement.SharedKernel\FarmManagement.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.1" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+
+<!-- <Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarmManagement.Modules.Crop.Application\Crop.Application.csproj" />
+    <ProjectReference Include="..\FarmManagement.Modules.Crop.Domain\Crop.Domain.csproj" />
     <ProjectReference Include="..\..\FarmManagement.SharedKernel\FarmManagement.SharedKernel.csproj" />
   </ItemGroup>
 
@@ -21,4 +48,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-</Project>
+</Project> -->
