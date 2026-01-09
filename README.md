@@ -1,6 +1,15 @@
+# enterprise-application-Group-2
+| Name| ID Number|
+|---|---|
+|BEAMLAK FEKADU|UGR/8928/15|
+|BELEN BERHANU|UGR/0379/15|
+|BEMNET ASSEGED|UGR/2591/15|
+|ETSUB NADEW|UGR/4283/15|
+|HASET WENDESEN|UGR/4331/15|
+
 # Farmwise Platform Backend
 
-![.NET](https://img.shields.io/badge/.NET-9.0-blue)
+![.NET](https://img.shields.io/badge/.NET-10.0-blue)
 ![Architecture](https://img.shields.io/badge/Architecture-DDD%20Modular%20Monolith-brightgreen)
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 
@@ -20,11 +29,7 @@ A modular DDD-based backend for the Smart Agriculture System. This backend manag
 
 ## 🏛 Architecture Overview
 This solution follows:
-
-- **Strategic DDD**
-  - Core, Supporting, Generic subdomains  
-  - Bounded Context separation  
-
+ 
 - **Tactical DDD**
   - Entities, Value Objects  
   - Aggregate Roots  
@@ -33,35 +38,35 @@ This solution follows:
   - Domain Events  
 
 Folder structure (initial phase):
-
-/src  
-/FarmContext  
-/CropContext  
-/AdvisoryContext  
-/NotificationContext  
-/tests  
-/docs  
-
-
+/docs/
+     /Keycloak
+     /outbox
+/src/  
+    /FarmManagement.Modules.Farm
+    /FarmManagement.Modules.Crop 
+    /FarmManagement.Modules.Advisory 
+    /FarmManagement.SharedKernel
+    /FarmManagement.Shared.Infrastructure
+    /FarmManagement.WebAPI
+      
 ---
 
 ## 🔧 Tech Stack
 | Category | Technology |
 |---|---|
-| Language | C# (.NET 9) |
+| Language | C# (.NET 10) |
 | Architecture | DDD + Clean Architecture |
 | Authentication | Keycloak |
 | Messaging | RabbitMQ |
 | Persistence | EF Core (Infra Layer only) |
-| AI/ML | Recommendation Model placeholder |
 
 ---
 
 ## 🚀 Running the Application
 ### Prerequisites
-✔ .NET SDK 9+  
+✔ .NET SDK 10  
 ✔ Docker installed  
-✔ PostgreSQL OR SQL Server  
+✔ SQL Server  
 ✔ RabbitMQ  
 ✔ Keycloak configured  
 
